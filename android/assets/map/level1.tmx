@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="20" height="10" tilewidth="70" tileheight="70">
+ <tileset firstgid="1" name="background-tiles" tilewidth="70" tileheight="70">
+  <image source="../img/background-tiles.png" width="910" height="840"/>
+ </tileset>
+ <tileset firstgid="157" name="hud-hearts" tilewidth="70" tileheight="70">
+  <image source="../img/hud-hearts.png" width="106" height="90"/>
+ </tileset>
+ <tileset firstgid="158" name="hud-keys" tilewidth="70" tileheight="70">
+  <image source="../img/hud-keys.png" width="176" height="80"/>
+ </tileset>
+ <tileset firstgid="160" name="building-tiles" tilewidth="70" tileheight="70">
+  <image source="../img/building-tiles.png" width="980" height="490"/>
+ </tileset>
+ <layer name="background" width="20" height="10">
+  <data encoding="base64" compression="zlib">
+   eJxjYMAPBAnIkwrioTQ3EqaGedQCIPNcsGBswAKNX4rDPEKgGEqbA7EtDkyMedj02eHAxJiHTV8iDozLDcgAl1585uESR5Yj5DZSzUPGACFcGpg=
+  </data>
+ </layer>
+ <layer name="foreground" width="20" height="10">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAviKWzfaOAuiCUyjhkkGMAb04UIg==
+  </data>
+ </layer>
+</map>
