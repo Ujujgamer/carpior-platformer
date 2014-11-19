@@ -17,6 +17,8 @@ public class GameScreen implements Screen{
         renderer = new OrthogonalTiledMapRenderer(map, 1/70f);
         //set the length and width of the map 14x14
         camera = new OrthographicCamera(14f, 14f);
+        //sets the camera's position
+        camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0f);
     }
 
     @Override
