@@ -20,7 +20,7 @@
  </tileset>
  <layer name="background2" width="20" height="10">
   <data encoding="base64" compression="zlib">
-   eJzN0rkOgEAIRVHEPfH/v3TUcY3XzpjJCJ3FaQg8KAiFyIgJMyIWrNiwIxh6DpxQFSlRoVbfbKpmnbXy3DPot3deyLDs9dz397yUVJ5Xbv/9f17Pf23QokOPC9hno/4=
+   eJxjYBgFo2AU4AIAAyAAAQ==
   </data>
  </layer>
  <layer name="background" width="20" height="10">

@@ -2,6 +2,7 @@ package com.carpior.platformer.view;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -29,6 +30,11 @@ public class GameScreen implements Screen{
 
     @Override
     public void render(float delta) {
+        //set the color of the clear
+        Gdx.gl.glClearColor(0.36f, 0.97f, 1f, 1f);
+        //clears the game screen and the color buffer
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
         //updates the camera's position
         camera.update();
         //renders the map for the camera
@@ -39,6 +45,10 @@ public class GameScreen implements Screen{
 
     @Override
     public void resize(int width, int height) {
+        //set the viewport width
+        camera.viewportWidth = 14f;
+        camera.viewportHeight = 14f * height / width;
+        camera.update();
 
     }
 
