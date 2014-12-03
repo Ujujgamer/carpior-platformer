@@ -4,14 +4,19 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.carpior.platformer.model.Player;
 
 public class GameScreen implements Screen{
     public TiledMap map;
     public OrthogonalTiledMapRenderer renderer;
     public OrthographicCamera camera;
+
+    public SpriteBatch spriteBatch;
+    public Player player;
 
     public GameScreen() {
         //loads the map from the assets folder
@@ -26,6 +31,9 @@ public class GameScreen implements Screen{
         camera = new OrthographicCamera(14f, 14f * (height/width));
         //sets the camera's position
         camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0f);
+
+        spriteBatch = new SpriteBatch();
+        player = new Player();
     }
 
     @Override
@@ -41,6 +49,12 @@ public class GameScreen implements Screen{
         renderer.setView(camera);
         //renders the render
         renderer.render();
+
+        //calls SpriteBatch to begin drawing on screen
+        spriteBatch.begin();
+        //uses SpriteBatch object to draw player
+        player.draw(spriteBatch);
+        spriteBatch.end();
     }
 
     @Override

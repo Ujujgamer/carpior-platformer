@@ -2,6 +2,7 @@ package com.carpior.platformer.model;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 
 public class Player {
@@ -14,6 +15,15 @@ public class Player {
         //positions the character
         position = new Vector2(0, 0);
         //gets a file and saves it as a texture
-        spriteSheet = new Texture(Gdx.files.internal("image/aliens.png"));
+        spriteSheet = new Texture(Gdx.files.internal("img/aliens.png"));
+    }
+
+    public void draw(Batch spriteBatch) {
+        //draws the SpriteSheet onto the game
+        spriteBatch.draw(spriteSheet, 0, 0, 70, 100);
+    }
+
+    public void update(float deltaTime) {
+
     }
 }
