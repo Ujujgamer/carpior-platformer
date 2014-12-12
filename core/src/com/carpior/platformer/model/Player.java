@@ -12,6 +12,7 @@ public class Player {
     public Vector2 position;
     //creates a variable for spriteSheets
     public Animation animation;
+    public Animation animation2;
     public Spritesheet spriteSheet;
 
     public int width;
@@ -20,11 +21,12 @@ public class Player {
 
     public Player() {
         //positions the character
-        position = new Vector2(8,3);
+        position = new Vector2(14,5);
         width = 70;
         height = 100;
         spriteSheet = new Spritesheet("img/aliens.png", width , height);
-        animation = spriteSheet.createAnimation(9, 10, 0.5f);
+        animation = spriteSheet.createAnimation(9, 10, 0.1f);
+        animation2 = spriteSheet.flipAnimation(animation, true, false);
         stateTime = 0f;
 
     }
@@ -38,6 +40,6 @@ public class Player {
     {
         //animates the character in a direction
         stateTime += deltaTime;
-        position.y += deltaTime;
+        position.x -= deltaTime;
     }
 }
