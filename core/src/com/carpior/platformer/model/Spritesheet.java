@@ -54,7 +54,7 @@ public class Spritesheet {
             TextureRegion[] flippedFrames = new TextureRegion[frameCount];
             //flips the animation of the character
             for(int index = 0; index < frameCount; index++) {
-                flippedFrames[index] = originalAnimation.getKeyFrames()[index];
+                flippedFrames[index] = new TextureRegion(originalAnimation.getKeyFrames()[index]);
                 flippedFrames[index].flip(flipX, flipY);
             }
             return new Animation(originalAnimation.getFrameDuration(), flippedFrames);
