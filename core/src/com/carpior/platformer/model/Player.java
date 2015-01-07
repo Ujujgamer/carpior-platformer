@@ -6,7 +6,13 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.badlogic.gdx.physics.box2d.PolygonShape;
+import com.carpior.platformer.view.GameScreen;
 
+import java.awt.Polygon;
 import java.util.HashMap;
 
 public class Player {
@@ -23,7 +29,7 @@ public class Player {
 
     public Player() {
         //positions the character
-        position = new Vector2(14,5);
+        position = new Vector2(0,5);
         animations = new HashMap<String, Animation>();
         width = 70;
         height = 100;
@@ -45,6 +51,26 @@ public class Player {
 
         currentAnimation = "idle";
         stateTime = 0f;
+
+        //creating the properties for a rigid body
+        BodyDef bodyDefinition = new BodyDef();
+        bodyDefinition.type = BodyDef.BodyType.DynamicBody;
+        bodyDefinition.position.set(position);
+
+        Body playerBody = GameScreen.gameWorld.createBody(bodyDefinition);
+        playerBody.setUserData(this);
+
+        //creates the body of the character
+        PolygonShape rectangleShape = new PolygonShape();
+        rectangleShape.setAsBox(width / 2f, height / 2f, new Vector2(width / 2f, height / 2f), 0f);
+
+        //attached it to the body
+        FixtureDef fixtureDefinition = new FixtureDef();
+        fixtureDefinition.shape = rectangleShape;
+
+        //disposes the body
+        playerBody.createFixture(fixtureDefinition);
+        rectangleShape.dispose();
     }
 
     public void draw(Batch spriteBatch) {
@@ -56,6 +82,5 @@ public class Player {
     {
         //animates the character in a direction
         stateTime += deltaTime;
-        position.x -= deltaTime;
     }
 }

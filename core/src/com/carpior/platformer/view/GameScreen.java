@@ -9,6 +9,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.physics.box2d.World;
 import com.carpior.platformer.model.Player;
 
 public class GameScreen implements Screen{
@@ -19,11 +22,17 @@ public class GameScreen implements Screen{
     public Batch spriteBatch;
     public Player player;
 
+    //created a static world
+    public static World gameWorld;
+    private Box2DDebugRenderer debugRenderer;
+
     public GameScreen() {
         //loads the map from the assets folder
         map = new TmxMapLoader().load("map/level1.tmx");
         renderer = new OrthogonalTiledMapRenderer(map, 1/70f);
-
+        //creates a "gravity"
+        gameWorld = new World(new Vector2(0, -9.8f), true);
+        debugRenderer = new Box2DDebugRenderer();
         //gets width/height of the window and stores them as variables
         float width = Gdx.graphics.getWidth();
         float height = Gdx.graphics.getHeight();
@@ -57,6 +66,9 @@ public class GameScreen implements Screen{
         //uses SpriteBatch object to draw player
         player.draw(spriteBatch);
         spriteBatch.end();
+
+        //renders the gameWorld and
+        debugRenderer.render(gameWorld, camera.combined);
     }
 
     @Override
