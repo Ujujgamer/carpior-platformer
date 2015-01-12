@@ -12,38 +12,17 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
+import com.carpior.platformer.controller.CameraController;
+import com.carpior.platformer.controller.LevelController;
+import com.carpior.platformer.controller.PlayerController;
 import com.carpior.platformer.model.Player;
 
 public class GameScreen implements Screen{
-    public TiledMap map;
-    public OrthogonalTiledMapRenderer renderer;
-    public OrthographicCamera camera;
-
-    public Batch spriteBatch;
-    public Player player;
-
-    //created a static world
-    public static World gameWorld;
-    private Box2DDebugRenderer debugRenderer;
 
     public GameScreen() {
-        //loads the map from the assets folder
-        map = new TmxMapLoader().load("map/level1.tmx");
-        renderer = new OrthogonalTiledMapRenderer(map, 1/70f);
-        //creates a "gravity"
-        gameWorld = new World(new Vector2(0, -9.8f), true);
-        debugRenderer = new Box2DDebugRenderer();
-        //gets width/height of the window and stores them as variables
-        float width = Gdx.graphics.getWidth();
-        float height = Gdx.graphics.getHeight();
-
-        //set the length and width of the map 14x14
-        camera = new OrthographicCamera(14f, 14f * (height/width));
-        //sets the camera's position
-        camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0f);
-
-        spriteBatch = renderer.getSpriteBatch();
-        player = new Player();
+        LevelController.initializeController();
+        CameraController.initializeController();
+        PlayerController.initializeController();
     }
 
     @Override
@@ -53,32 +32,15 @@ public class GameScreen implements Screen{
         //clears the game screen and the color buffer
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        //updates the camera's position
-        camera.update();
-        //renders the map for the camera
-        renderer.setView(camera);
-        //renders the render
-        renderer.render();
-
-        player.update(delta);
-        //calls SpriteBatch to begin drawing on screen
-        spriteBatch.begin();
-        //uses SpriteBatch object to draw player
-        player.draw(spriteBatch);
-        spriteBatch.end();
-
-        //renders the gameWorld and
-        debugRenderer.render(gameWorld, camera.combined);
+        CameraController.update();
+        LevelController.update();
+        PlayerController.update(delta);
+        LevelController.draw();
     }
 
     @Override
     public void resize(int width, int height) {
-        //set the viewport width
-        camera.viewportWidth = 14f;
-        //set the viewport height
-        camera.viewportHeight = 14f * height / width;
-        camera.update();
-
+        CameraController.resize(width, height);
     }
 
     @Override
