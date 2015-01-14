@@ -26,7 +26,7 @@ public class LevelController {
         level = new Level("map/level1.tmx");
         renderer = new OrthogonalTiledMapRenderer(Level.map, UNIT_SCALE);
         //creates a "gravity"
-        gameWorld = new World(new Vector2(0, -9.8f), true);
+        gameWorld = new World(new Vector2(0, 0), true);
         worldBodies = new Array<Body>();
         debugRenderer = new Box2DDebugRenderer();
         spriteBatch = renderer.getSpriteBatch();
@@ -57,8 +57,8 @@ public class LevelController {
         gameWorld.getBodies(worldBodies);
 
         for(Body body : worldBodies) {
-            Sprite playerBody = (Sprite)body.getUserData();
-            playerBody.position = body.getPosition();
+            Sprite spriteBody = (Sprite)body.getUserData();
+            spriteBody.position = body.getPosition();
         }
     }
 }
