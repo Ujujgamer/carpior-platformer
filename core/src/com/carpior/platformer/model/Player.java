@@ -10,8 +10,8 @@ import com.carpior.platformer.controller.LevelController;
 
 public class Player extends Sprite{
 
-    public Player(Vector2 position, int width, int height) {
-        super(position, width, height);
+    public Player(Vector2 position, int width, int height, String sheetPath) {
+        super(position, width, height, sheetPath);
 
         animations.put("walk", spriteSheet.createAnimation(9, 10, 0.1f));
         animations.put("walkFlip", spriteSheet.flipAnimation(animations.get("walk"), true, false));
@@ -27,6 +27,8 @@ public class Player extends Sprite{
         animations.put("idleFlip", spriteSheet.flipAnimation(animations.get("idle"), true, false));
         animations.put("swim", spriteSheet.createAnimation(7, 8, 0.2f));
         animations.put("swimFlip", spriteSheet.flipAnimation(animations.get("walk"), true, false));
+
+        currentAnimation = "walk";
 
         //creating the properties for a rigid body
         BodyDef bodyDefinition = new BodyDef();
@@ -47,6 +49,7 @@ public class Player extends Sprite{
         //disposes the body
         physicsBody.createFixture(fixtureDefinition);
         rectangleShape.dispose();
+
     }
 
     public void draw(Batch spriteBatch) {

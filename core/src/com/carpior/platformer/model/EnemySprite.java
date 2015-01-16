@@ -8,7 +8,7 @@ import com.carpior.platformer.controller.LevelController;
 
 import java.util.HashMap;
 
-public class Sprite {
+public class EnemySprite {
     public Body physicsBody;
     //creates a variable for positions
     public Vector2 position;
@@ -22,15 +22,16 @@ public class Sprite {
     protected float stateTime;
     protected HashMap<String, Animation> animations;
 
-    public Sprite(Vector2 position, int width, int height, String sheetPath) {
+    public EnemySprite(Vector2 position, int width, int height, String sheetPath) {
         //positions the character
         this.position = position;
         animations = new HashMap<String, Animation>();
 
-        this.width = width * LevelController.UNIT_SCALE;
-        this.height = height  * LevelController.UNIT_SCALE;
+        this.width = width * LevelController.ENEMY_UNIT_SCALE;
+        this.height = height  * LevelController.ENEMY_UNIT_SCALE;
 
         spriteSheet = new Spritesheet(sheetPath, width , height);
+        currentAnimation = "attack";
         stateTime = 0f;
     }
 

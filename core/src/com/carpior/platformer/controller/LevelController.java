@@ -12,6 +12,7 @@ import com.carpior.platformer.model.Sprite;
 
 public class LevelController {
     public static final float UNIT_SCALE = 1/70f;
+    public static final float ENEMY_UNIT_SCALE = 1/51f;
 
     public static Level level;
     public static OrthogonalTiledMapRenderer renderer;
@@ -26,7 +27,7 @@ public class LevelController {
         level = new Level("map/level1.tmx");
         renderer = new OrthogonalTiledMapRenderer(Level.map, UNIT_SCALE);
         //creates a "gravity"
-        gameWorld = new World(new Vector2(0, 0), true);
+        gameWorld = new World(new Vector2(0, -10), true);
         worldBodies = new Array<Body>();
         debugRenderer = new Box2DDebugRenderer();
         spriteBatch = renderer.getSpriteBatch();
@@ -37,6 +38,7 @@ public class LevelController {
         spriteBatch.begin();
         //uses SpriteBatch object to draw player
         PlayerController.player.draw(spriteBatch);
+        EnemyController.enemy.draw(spriteBatch);
         spriteBatch.end();
 
         //renders the gameWorld and

@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.carpior.platformer.controller.CameraController;
+import com.carpior.platformer.controller.EnemyController;
 import com.carpior.platformer.controller.LevelController;
 import com.carpior.platformer.controller.PlayerController;
 
@@ -13,6 +14,7 @@ public class GameScreen implements Screen {
         LevelController.initializeController();
         CameraController.initializeController();
         PlayerController.initializeController();
+        EnemyController.initializeController();
     }
 
     @Override
@@ -25,6 +27,7 @@ public class GameScreen implements Screen {
         CameraController.update();
         LevelController.update();
         PlayerController.update(delta);
+        EnemyController.update(delta);
         LevelController.draw();
     }
 
