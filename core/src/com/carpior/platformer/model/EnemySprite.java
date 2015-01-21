@@ -27,8 +27,8 @@ public class EnemySprite {
         this.position = position;
         animations = new HashMap<String, Animation>();
 
-        this.width = width * LevelController.ENEMY_UNIT_SCALE;
-        this.height = height  * LevelController.ENEMY_UNIT_SCALE;
+        this.width = width * LevelController.UNIT_SCALE;
+        this.height = height  * LevelController.UNIT_SCALE;
 
         spriteSheet = new Spritesheet(sheetPath, width , height);
         currentAnimation = "attack";

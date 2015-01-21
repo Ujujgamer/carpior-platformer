@@ -7,7 +7,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.carpior.platformer.controller.LevelController;
 
-public class Enemy extends EnemySprite {
+public class Enemy extends Sprite {
     public Enemy(Vector2 position, int width, int height, String sheetPath) {
         super(position, width, height, sheetPath);
 

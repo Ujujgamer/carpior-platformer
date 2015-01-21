@@ -1,12 +1,15 @@
 package com.carpior.platformer.controller;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
+import com.carpior.platformer.model.Bodies;
 import com.carpior.platformer.model.Level;
 import com.carpior.platformer.model.Sprite;
 
@@ -31,6 +34,7 @@ public class LevelController {
         worldBodies = new Array<Body>();
         debugRenderer = new Box2DDebugRenderer();
         spriteBatch = renderer.getSpriteBatch();
+        createLevelBodies();
     }
 
     public static void draw() {
@@ -60,7 +64,17 @@ public class LevelController {
 
         for(Body body : worldBodies) {
             Sprite spriteBody = (Sprite)body.getUserData();
-            spriteBody.position = body.getPosition();
+
+            if(spriteBody != null) {
+                spriteBody.position = body.getPosition();
+            }
+        }
+    }
+
+    private static void createLevelBodies() {
+        MapObjects mapObjects = level.getMapObjects(level.getMapLayer("collision"));
+        for(MapObject mapObject : mapObjects) {
+            Bodies.createBody(mapObject);
         }
     }
 }

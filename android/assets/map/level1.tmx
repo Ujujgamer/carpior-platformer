@@ -25,12 +25,12 @@
  </layer>
  <layer name="background" width="20" height="10">
   <data encoding="base64" compression="zlib">
-   eJxjYMAPFjISUEAm4EbClIB4KrgF3TwXLBgbsEDjl+IwjxAohtLmQGyLAxNjHjZ9djgwMeZh05eIA8OAKxC7QbE7mnm49OIzD5c4shwht5FqHjIGAPFnGu4=
+   eJxjYMAPFjISUEAm4EbClIB4KrgF3TwXLBgbsEDjl+IwjxAohtLmQGyLAxNjHjZ9djgwMeZh05eIA8OAKxC7QbE7EHvi0YMPwwAucWQ5Qm4j1TxkDAC1Khv5
   </data>
  </layer>
  <layer name="foreground" width="20" height="10">
   <data encoding="base64" compression="zlib">
-   eJxjYMAPYgnIkwriqWweLYArELshYXc62u2LA5Orl9ogjMo4ZJBjABCFGUI=
+   eJxjYMAPYgnIkwriqWweLYArELshYXc62u2LA+MDHmTqw2WWJxDb4ZAPozIOGeQYALLIGqY=
   </data>
  </layer>
  <objectgroup color="#ff0000" name="collision" width="20" height="10">
@@ -38,5 +38,8 @@
   <object name="ground" type="solid" x="560" y="490" width="280" height="70"/>
   <object name="ground" type="solid" x="1050" y="350" width="350" height="70"/>
   <object name="ground" type="solid" x="631" y="209" width="351" height="43"/>
+  <object name="ground" type="slope" x="840" y="490">
+   <polygon points="0,0 140,-140 140,0"/>
+  </object>
  </objectgroup>
 </map>
