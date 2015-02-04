@@ -15,6 +15,7 @@ public class Sprite {
     //creates a variable for spriteSheets
     public Spritesheet spriteSheet;
     public String currentAnimation;
+    public String direction;
 
     public float width;
     public float height;
@@ -32,6 +33,8 @@ public class Sprite {
 
         spriteSheet = new Spritesheet(sheetPath, width , height);
         stateTime = 0f;
+
+        direction = "right";
     }
 
     public void draw(Batch spriteBatch) {

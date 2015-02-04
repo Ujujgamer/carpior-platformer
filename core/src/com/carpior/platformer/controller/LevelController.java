@@ -10,6 +10,7 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 import com.carpior.platformer.model.Bodies;
+import com.carpior.platformer.model.CollisionListener;
 import com.carpior.platformer.model.Level;
 import com.carpior.platformer.model.Sprite;
 
@@ -29,21 +30,28 @@ public class LevelController {
     public static void initializeController() {
         level = new Level("map/level1.tmx");
         renderer = new OrthogonalTiledMapRenderer(Level.map, UNIT_SCALE);
+
         //creates a "gravity"
-        gameWorld = new World(new Vector2(0, -10), true);
+        gameWorld = new World(new Vector2(0, -5), true);
+        gameWorld.setContactListener(new CollisionListener());
         worldBodies = new Array<Body>();
         debugRenderer = new Box2DDebugRenderer();
+
         spriteBatch = renderer.getSpriteBatch();
         createLevelBodies();
     }
 
     public static void draw() {
+        spriteBatch.setProjectionMatrix(CameraController.camera.combined);
         //calls SpriteBatch to begin drawing on screen
         spriteBatch.begin();
         //uses SpriteBatch object to draw player
         PlayerController.player.draw(spriteBatch);
         EnemyController.enemy.draw(spriteBatch);
         spriteBatch.end();
+
+        spriteBatch.setProjectionMatrix(CameraController.inputCamera.combined);
+        InputController.draw(spriteBatch);
 
         //renders the gameWorld and
         debugRenderer.render(gameWorld, CameraController.camera.combined);
@@ -74,6 +82,10 @@ public class LevelController {
     private static void createLevelBodies() {
         MapObjects mapObjects = level.getMapObjects(level.getMapLayer("collision"));
         for(MapObject mapObject : mapObjects) {
+            Bodies.createBody(mapObject);
+        }
+        MapObjects mapObjects1 = level.getMapObjects(level.getMapLayer("blocks"));
+        for(MapObject mapObject : mapObjects1) {
             Bodies.createBody(mapObject);
         }
     }
