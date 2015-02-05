@@ -11,6 +11,8 @@ public class PlayerController {
     public static String movementAction;
     public static String specialAction;
 
+    public static boolean grounded;
+
     private static final float VELOCITY = 1f;
     private static final float MAX_VELOCITY = 5f;
     private static final float JUMP_VELOCITY = 7f;
@@ -56,8 +58,9 @@ public class PlayerController {
             player.direction = "left";
         }
 
-        if(specialAction.equalsIgnoreCase("jump")) {
-            player.physicsBody.applyLinearImpulse(0, 0.5f, position.x, position.y, true);
+        if(specialAction.equalsIgnoreCase("jump") && PlayerController.grounded == true) {
+            player.physicsBody.applyLinearImpulse(0, 4f, position.x, position.y, true);
+            grounded = false;
         }
 
         if(Math.abs(velocity.x) > 0) {

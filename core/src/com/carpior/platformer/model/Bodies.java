@@ -79,6 +79,7 @@ public class Bodies {
 
             FixtureDef fixtureDefinition = new FixtureDef();
             fixtureDefinition.shape = rectangleShape;
+            fixtureDefinition.density = 0.5f;
 
             physicsBody.createFixture(fixtureDefinition);
             rectangleShape.dispose();

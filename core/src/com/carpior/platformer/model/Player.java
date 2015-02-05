@@ -49,7 +49,7 @@ public class Player extends Sprite{
         FixtureDef fixtureDefinition = new FixtureDef();
         fixtureDefinition.shape = rectangleShape;
 
-        fixtureDefinition.density = 1f;
+        fixtureDefinition.density = 0.7f;
 
         FixtureDef fixtureDefinitionSensor = new FixtureDef();
         fixtureDefinitionSensor.shape = sensorShape;
