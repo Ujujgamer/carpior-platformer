@@ -28,7 +28,7 @@ public class Player extends Sprite{
         animations.put("swim", spriteSheet.createAnimation(7, 8, 0.2f));
         animations.put("swimFlip", spriteSheet.flipAnimation(animations.get("swim"), true, false));
 
-        currentAnimation = "walk";
+        currentAnimation = "walkRight";
 
         //creating the properties for a rigid body
         BodyDef bodyDefinition = new BodyDef();

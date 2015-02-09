@@ -1,7 +1,5 @@
 package com.carpior.platformer.controller;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.Vector2;
 import com.carpior.platformer.model.Player;
 
@@ -63,7 +61,17 @@ public class PlayerController {
             grounded = false;
         }
 
+        if(Math.abs(velocity.x) > 0){
+            if(velocity.y > 0 || grounded == false) {
+                playerState = State.Jump;
+            }
+            else{
+                playerState = State.Walk;
+            }
+        }
+
         if(Math.abs(velocity.x) > 0) {
+            if(velocity.x > 0 || grounded == false)
             playerState = State.Walk;
         }
         else {
@@ -89,6 +97,9 @@ public class PlayerController {
         if(playerState == State.Walk) {
             player.currentAnimation = "walkRight";
         }
+        if(playerState == State.Jump) {
+            player.currentAnimation = "jumpRight";
+        }
         else if(playerState == State.Idle) {
             player.currentAnimation = "idleRight";
         }
@@ -98,6 +109,9 @@ public class PlayerController {
     private static void setLeftAnimation() {
         if(playerState == State.Walk) {
             player.currentAnimation = "walkLeft";
+        }
+        if(playerState == State.Jump) {
+            player.currentAnimation = "jumpLeft";
         }
         else if(playerState == State.Idle) {
             player.currentAnimation = "idleLeft";
