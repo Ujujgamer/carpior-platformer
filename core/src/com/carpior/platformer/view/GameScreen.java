@@ -7,11 +7,13 @@ import com.carpior.platformer.controller.CameraController;
 import com.carpior.platformer.controller.EnemyController;
 import com.carpior.platformer.controller.InputController;
 import com.carpior.platformer.controller.LevelController;
+import com.carpior.platformer.controller.MusicController;
 import com.carpior.platformer.controller.PlayerController;
 
 public class GameScreen implements Screen {
 
     public GameScreen() {
+        MusicController.initializeMusicController();
         LevelController.initializeController();
         CameraController.initializeController();
         PlayerController.initializeController();

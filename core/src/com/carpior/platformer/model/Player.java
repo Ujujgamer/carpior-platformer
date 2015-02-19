@@ -13,22 +13,22 @@ public class Player extends Sprite{
     public Player(Vector2 position, int width, int height, String sheetPath) {
         super(position, width, height, sheetPath);
 
-        animations.put("walkRight", spriteSheet.createAnimation(9, 10, 0.1f));
+        animations.put("walkRight", spriteSheet.createAnimation(53, 54, 0.1f));
         animations.put("walkLeft", spriteSheet.flipAnimation(animations.get("walkRight"), true, false));
-        animations.put("stand", spriteSheet.createAnimation(0, 0, 0.1f));
-        animations.put("climb", spriteSheet.createAnimation(1, 2, 0.2f));
-        animations.put("duck", spriteSheet.createAnimation(2, 2, 0.1f));
+        animations.put("stand", spriteSheet.createAnimation(50, 50, 0.1f));
+        animations.put("climb", spriteSheet.createAnimation(45, 46, 0.2f));
+        animations.put("duck", spriteSheet.createAnimation(47, 47, 0.1f));
         animations.put("duckFlip", spriteSheet.flipAnimation(animations.get("duck"), true, false));
-        animations.put("hurt", spriteSheet.createAnimation(4, 4, 0.1f));
+        animations.put("hurt", spriteSheet.createAnimation(48, 48, 0.1f));
         animations.put("hurtFlip", spriteSheet.flipAnimation(animations.get("hurt"), true, false));
-        animations.put("jumpRight", spriteSheet.createAnimation(5, 5, 0.1f));
+        animations.put("jumpRight", spriteSheet.createAnimation(49, 49, 0.1f));
         animations.put("jumpLeft", spriteSheet.flipAnimation(animations.get("jumpRight"), true, false));
-        animations.put("idleRight", spriteSheet.createAnimation(6, 6, 0.1f));
-        animations.put("idleLeft", spriteSheet.flipAnimation(animations.get("idleRight"), true, false));
-        animations.put("swim", spriteSheet.createAnimation(7, 8, 0.2f));
+        animations.put("idle", spriteSheet.createAnimation(44, 44, 0.1f));
+        animations.put("idleFlip", spriteSheet.flipAnimation(animations.get("idle"), true, false));
+        animations.put("swim", spriteSheet.createAnimation(51, 52, 0.2f));
         animations.put("swimFlip", spriteSheet.flipAnimation(animations.get("swim"), true, false));
 
-        currentAnimation = "walkRight";
+        currentAnimation = "idle";
 
         //creating the properties for a rigid body
         BodyDef bodyDefinition = new BodyDef();

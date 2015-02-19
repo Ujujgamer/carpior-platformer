@@ -25,6 +25,10 @@ public class InputController {
         left = new InputControl(new Vector2(0, 0), spritesheet.spriteFrames[0], "left");
         right = new InputControl(new Vector2(2, 0), spritesheet.spriteFrames[1], "right");
         jump = new InputControl(new Vector2(2, 2), spritesheet.spriteFrames[2], "jump");
+
+        inputControls.add(left);
+        inputControls.add(right);
+        inputControls.add(jump);
         Gdx.input.setInputProcessor(createInputAdapter());
     }
 
@@ -84,7 +88,7 @@ public class InputController {
                 else if(keycode == Input.Keys.LEFT) {
                     PlayerController.movementAction = "left";
                 }
-                else if(keycode == Input.Keys.SPACE) {
+                else if(keycode == Input.Keys.UP) {
                     PlayerController.specialAction = "jump";
                 }
                 return true;
@@ -98,7 +102,7 @@ public class InputController {
                 else if(keycode == Input.Keys.LEFT) {
                     PlayerController.movementAction = "";
                 }
-                else if(keycode == Input.Keys.SPACE) {
+                else if(keycode == Input.Keys.UP) {
                     PlayerController.specialAction = "";
                 }
                 return true;

@@ -2,6 +2,7 @@ package com.carpior.platformer.controller;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.math.MathUtils;
 
 public class CameraController {
     public static OrthographicCamera camera;
@@ -27,6 +28,10 @@ public class CameraController {
 
     public static void update() {
         camera.position.set(PlayerController.player.position.x, PlayerController.player.position.y, 0);
+        float width = Gdx.graphics.getWidth();
+        float height = Gdx.graphics.getHeight();
+        camera.position.x = MathUtils.clamp(PlayerController.player.position.x, camera.viewportWidth / 2f, width / (70-55.7f));
+        camera.position.y = MathUtils.clamp(PlayerController.player.position.y, camera.viewportHeight / 2f, height / (70-55.7f));
         //updates the camera's position
         camera.update();
     }

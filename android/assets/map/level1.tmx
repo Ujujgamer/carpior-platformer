@@ -30,7 +30,7 @@
  </layer>
  <layer name="foreground" width="70" height="10">
   <data encoding="base64" compression="zlib">
-   eJxjYMAPYgnIj1QQP9AOGMTAFYjdkLD7wDpnFIyCQQd8cWB8wAOPPmL0D0cAChNPILbDIS9CR7fQEoRRGQ+XcAmhMgaFizUReLADWoQLMXiwAwAXyB5X
+   eJxjYMAPYgnIj1QQP9AOGMTAFYjdkLD7wDpnFIyCQQd8cWB8wAOPPmL0D0cAChNPILbDIS9CoflyQKyMhBUoNI9cEEZlTEm4gMJEEWoGDMszDEzYhFAZg/xiTQRGB9jCZCDDhhbhQgtM77ABAIf6Ick=
   </data>
  </layer>
  <objectgroup color="#ff0000" name="collision" width="70" height="10">
@@ -48,6 +48,12 @@
   </object>
   <object name="ground" type="ground" x="1400" y="350">
    <polyline points="0,0 140,0 140,70 70,70 70,280 700,280"/>
+  </object>
+  <object name="ground" type="ground" x="0" y="0">
+   <polyline points="0,0 4900,0 4900,700 0,700 0,0"/>
+  </object>
+  <object name="ground" type="ground" x="2100" y="630">
+   <polyline points="0,0 280,0 490,-210 700,-210 980,70"/>
   </object>
  </objectgroup>
  <objectgroup name="blocks" width="70" height="10">

@@ -58,6 +58,7 @@ public class PlayerController {
 
         if(specialAction.equalsIgnoreCase("jump") && PlayerController.grounded == true) {
             player.physicsBody.applyLinearImpulse(0, 4f, position.x, position.y, true);
+            player.direction = "right";
             grounded = false;
         }
 
@@ -65,17 +66,9 @@ public class PlayerController {
             if(velocity.y > 0 || grounded == false) {
                 playerState = State.Jump;
             }
-            else{
+            else if (velocity.x > 0 || grounded == true){
                 playerState = State.Walk;
             }
-        }
-
-        if(Math.abs(velocity.x) > 0) {
-            if(velocity.x > 0 || grounded == false)
-            playerState = State.Walk;
-        }
-        else {
-            playerState = State.Idle;
         }
 
         setCurrentAnimation();
@@ -87,9 +80,6 @@ public class PlayerController {
         }
         if(player.direction.equals("left")) {
             setLeftAnimation();
-        }
-        if (player.direction.equals("jump")) {
-            setJumpAnimation();
         }
     }
 
@@ -115,14 +105,6 @@ public class PlayerController {
         }
         else if(playerState == State.Idle) {
             player.currentAnimation = "idleLeft";
-        }
-    }
-    private static void setJumpAnimation() {
-        if(playerState == State.Jump) {
-            player.currentAnimation = "jumpRight";
-        }
-        else if(playerState == State.Idle) {
-            player.currentAnimation = "jumpLeft";
         }
     }
 }

@@ -1,5 +1,7 @@
 package com.carpior.platformer.controller;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
@@ -21,6 +23,7 @@ public class LevelController {
     public static Level level;
     public static OrthogonalTiledMapRenderer renderer;
     public static Batch spriteBatch;
+    public static Music music;
 
     //creates a static world
     public static World gameWorld;
@@ -39,6 +42,7 @@ public class LevelController {
 
         spriteBatch = renderer.getSpriteBatch();
         createLevelBodies();
+        MusicController.play("music");
     }
 
     public static void draw() {
