@@ -24,7 +24,7 @@ public class InputController {
 
         left = new InputControl(new Vector2(0, 0), spritesheet.spriteFrames[0], "left");
         right = new InputControl(new Vector2(2, 0), spritesheet.spriteFrames[1], "right");
-        jump = new InputControl(new Vector2(2, 2), spritesheet.spriteFrames[2], "jump");
+        jump = new InputControl(new Vector2(1, 1), spritesheet.spriteFrames[2], "jump");
 
         inputControls.add(left);
         inputControls.add(right);

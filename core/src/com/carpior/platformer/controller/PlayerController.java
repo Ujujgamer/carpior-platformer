@@ -57,16 +57,27 @@ public class PlayerController {
         }
 
         if(specialAction.equalsIgnoreCase("jump") && PlayerController.grounded == true) {
+            if (velocity.y > MAX_VELOCITY) {
+                velocity.y = 0;
+                player.physicsBody.setLinearVelocity(velocity.x, velocity.y);
+            }
             player.physicsBody.applyLinearImpulse(0, 4f, position.x, position.y, true);
-            player.direction = "right";
             grounded = false;
         }
 
+        if (specialAction.equalsIgnoreCase("duck") && PlayerController.grounded == true) {
+            player.physicsBody.applyLinearImpulse(0f, 0f, position.x, position.y, true);
+            grounded = true;
+        }
+
         if(Math.abs(velocity.x) > 0){
-            if(velocity.y > 0 || grounded == false) {
+            if(specialAction.equalsIgnoreCase("duck") && PlayerController.grounded == true) {
+                playerState = State.Duck;
+            }
+            else if (velocity.y > 0 || grounded == false){
                 playerState = State.Jump;
             }
-            else if (velocity.x > 0 || grounded == true){
+            else {
                 playerState = State.Walk;
             }
         }
