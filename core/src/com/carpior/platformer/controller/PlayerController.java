@@ -102,7 +102,7 @@ public class PlayerController {
             player.currentAnimation = "jumpRight";
         }
         else if(playerState == State.Idle) {
-            player.currentAnimation = "idleRight";
+            player.currentAnimation = "idle";
         }
 
     }
@@ -115,7 +115,7 @@ public class PlayerController {
             player.currentAnimation = "jumpLeft";
         }
         else if(playerState == State.Idle) {
-            player.currentAnimation = "idleLeft";
+            player.currentAnimation = "idle";
         }
     }
 }

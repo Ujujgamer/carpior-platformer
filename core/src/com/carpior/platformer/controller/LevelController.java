@@ -23,7 +23,6 @@ public class LevelController {
     public static Level level;
     public static OrthogonalTiledMapRenderer renderer;
     public static Batch spriteBatch;
-    public static Music music;
 
     //creates a static world
     public static World gameWorld;

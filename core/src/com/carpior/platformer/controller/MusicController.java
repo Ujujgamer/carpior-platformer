@@ -8,7 +8,7 @@ public class MusicController {
     public static Music music;
 
     public static void initializeMusicController(){
-        music = Gdx.audio.newMusic(Gdx.files.internal("music/MoneyTreesInst.mp3"));
+        music = Gdx.audio.newMusic(Gdx.files.internal("music/Do It.mp3"));
     }
 
     public static void play(String soundName){

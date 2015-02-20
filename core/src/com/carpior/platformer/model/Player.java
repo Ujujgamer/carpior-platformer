@@ -24,7 +24,6 @@ public class Player extends Sprite{
         animations.put("jumpRight", spriteSheet.createAnimation(49, 49, 0.1f));
         animations.put("jumpLeft", spriteSheet.flipAnimation(animations.get("jumpRight"), true, false));
         animations.put("idle", spriteSheet.createAnimation(44, 44, 0.1f));
-        animations.put("idleFlip", spriteSheet.flipAnimation(animations.get("idle"), true, false));
         animations.put("swim", spriteSheet.createAnimation(51, 52, 0.2f));
         animations.put("swimFlip", spriteSheet.flipAnimation(animations.get("swim"), true, false));
 
